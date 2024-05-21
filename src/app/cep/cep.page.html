@@ -1,0 +1,72 @@
+<!-- cep.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Consulta de CEP - Mobile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="--background: #e2fcfa;">
+  <ion-item>
+    <ion-label *ngIf="!cep">CEP</ion-label >
+    <ion-input
+      class="cepinput"
+      [(ngModel)]="cep"
+      (ionInput)="formatCep($event)"
+      (ionBlur)="verificarCep()"
+      maxlength="9"
+      inputmode="numeric"
+      type="text"
+    >
+    </ion-input>
+  </ion-item>
+
+  <div *ngIf="cepValido">
+    <ion-item *ngIf="endereco?.logradouro">
+      <ion-label position="floating">Logradouro</ion-label>
+      <ion-input [value]="endereco.logradouro" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.complemento">
+      <ion-label position="floating">Complemento</ion-label>
+      <ion-input [value]="endereco.complemento" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.bairro">
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input [value]="endereco.bairro" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.localidade">
+      <ion-label position="floating">Cidade</ion-label>
+      <ion-input [value]="endereco.localidade" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.uf">
+      <ion-label position="floating">UF</ion-label>
+      <ion-input [value]="endereco.uf" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.ibge">
+      <ion-label position="floating">IBGE</ion-label>
+      <ion-input [value]="endereco.ibge" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.gia">
+      <ion-label position="floating">GIA</ion-label>
+      <ion-input [value]="endereco.gia" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.ddd">
+      <ion-label position="floating">DDD</ion-label>
+      <ion-input [value]="endereco.ddd" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="endereco?.siafi">
+      <ion-label position="floating">SIAFI</ion-label>
+      <ion-input [value]="endereco.siafi" disabled></ion-input>
+    </ion-item>
+  </div>
+</ion-content>
